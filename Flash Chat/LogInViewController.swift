@@ -7,6 +7,8 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
+
 
 
 
@@ -28,6 +30,7 @@ class LogInViewController: UIViewController {
    
     @IBAction func logInPressed(_ sender: AnyObject) {
 
+        SVProgressHUD.show()   // Icon to keep the user waiting using a spinning circle.
         
         //TODO: Log in the user1
         Auth.auth().signIn(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
@@ -36,6 +39,7 @@ class LogInViewController: UIViewController {
                 print(error!)
             } else {
                 print("Log in successful!")
+                SVProgressHUD.dismiss()    // Dismiss the icon if the user could log in successfully.
                 self.performSegue(withIdentifier: "goToChat", sender: self)
             }
             

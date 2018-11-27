@@ -22,9 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //TODO: Initialise and Configure your Firebase here:
         FirebaseApp.configure()
         
-        let myDatabase = Database.database().reference()
         
-        myDatabase.setValue("We have got some data")
+// MARK: - This data was removed to retrieve the messages , otherwise it will show only the message:
+        
+//        let myDatabase = Database.database().reference()
+//        
+//        myDatabase.setValue("We have got some data")
         
         return true
     }

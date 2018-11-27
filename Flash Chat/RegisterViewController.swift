@@ -7,6 +7,8 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
+
 
 
 class RegisterViewController: UIViewController {
@@ -29,6 +31,8 @@ class RegisterViewController: UIViewController {
     
     
     @IBAction func registerPressed(_ sender: AnyObject) {
+        
+        SVProgressHUD.show()    // We sho the spinning circle for the use to wait.
         //TODO: Set up a new user on our Firbase database
         Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, error) in
             
@@ -37,6 +41,7 @@ class RegisterViewController: UIViewController {
             } else {
                 print("Registration successful!")
                 
+                SVProgressHUD.dismiss()   // Spinning circle is dismissed if the user could register sucessfully
                 self.performSegue(withIdentifier: "goToChat", sender: self)
                 
             }
